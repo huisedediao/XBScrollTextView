@@ -23,6 +23,7 @@
     UIFont *_font;
     UIColor *_textColor;
     NSArray *_arrTextColor;
+    NSTextAlignment _textAlignment;
     
     ///内部变量
     //不变
@@ -55,12 +56,10 @@
         _maxWidth = maxWidth;
         _font = [UIFont systemFontOfSize:15];
         _textColor = [UIColor blackColor];
+        _textAlignment = NSTextAlignmentCenter;
         
         _arrHeight = [NSMutableArray new];
-        
-        NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
-        [style setAlignment:NSTextAlignmentCenter];
-        _attrs = [[NSMutableDictionary alloc] initWithDictionary:@{NSParagraphStyleAttributeName:style}];
+        _attrs = [NSMutableDictionary new];
         
         [self setFont:_font];
         [self setTextArr:textArr];
@@ -75,6 +74,10 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
+    [style setAlignment:_textAlignment];
+    [_attrs setObject:style forKey:NSParagraphStyleAttributeName];
+    
     ///实际的index
     NSInteger index = [self enSureIndex:_startIndex];
     
@@ -207,6 +210,12 @@
     [self setNeedsDisplay];
 }
 
+- (void)setTextAlignment:(NSTextAlignment)textAlignment
+{
+    _textAlignment = textAlignment;
+    [self setNeedsDisplay];
+}
+
 - (void)startScroll
 {
     _isScrolling = true;
@@ -302,5 +311,7 @@
 }
 
 @end
+
+
 
 

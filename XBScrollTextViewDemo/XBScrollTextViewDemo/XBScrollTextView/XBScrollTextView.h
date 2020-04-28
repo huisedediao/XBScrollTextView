@@ -49,6 +49,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setTextColorArr:(NSArray *)textColorArr;
 
 /**
+ 文字对齐方式，默认居中
+ */
+- (void)setTextAlignment:(NSTextAlignment)textAlignment;
+
+/**
  设置textArr，在滚动时设置可能会闪屏
  */
 - (void)setTextArr:(NSArray *)textArr;
@@ -88,3 +93,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

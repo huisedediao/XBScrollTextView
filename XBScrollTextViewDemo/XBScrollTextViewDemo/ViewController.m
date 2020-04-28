@@ -38,6 +38,7 @@
     [_scrollTextView setFont:[UIFont systemFontOfSize:30]];
 //    [_scrollTextView setTextColor:[UIColor orangeColor]];
     [_scrollTextView setTextColorArr:@[[UIColor greenColor],[UIColor redColor],[UIColor blueColor]]];
+    [_scrollTextView setTextAlignment:NSTextAlignmentLeft];
     [_scrollTextView startScroll];
     _scrollTextView.backgroundColor = [UIColor blackColor];
 }
